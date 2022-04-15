@@ -19,27 +19,43 @@ module.exports = {
 
         browser
         .maximizeWindow()
+
+        //welcome page!
         .url('https://check-barmer.zhp-online.de/x3/de/')
         .waitForElementVisible(welcomeMessageSelector)
         .assert.containsText(welcomeMessageSelector, "Willkommen bei ZHP-Online!")
+
+        //login
         .waitForElementVisible(usernameInputSelector)
         .setValue(usernameInputSelector, usernameBarmer)
         .saveScreenshot('username.png')
         .setValue(passwordInputSelector, passwordBarmer)
         .saveScreenshot('password.png')
         .click(selectLogin)
+
+        //wait for first page to load
         .waitForElementVisible(usernameAndVersion)
-        .saveScreenshot('homepage.png')
+        .saveScreenshot('tests_output/Screenshots/myFirstTest/homepage.png')
+
+        //remove all filters
         .waitForElementVisible(visibleOrdersTable)
         .waitForElementVisible(removeAllFilters)
         .click(removeAllFilters)
+
+        //check refresh message
         .waitForElementVisible(visibleOrdersTable)
         .assert.containsText(visibleOrdersTable, searchAgainManuallyMessage)
         .saveScreenshot('tests_output/Screenshots/myFirstTest/allefilterentfernen.png')
+
+        //click refresh
         .waitForElementVisible(refreshOrdersButton)
         .click(refreshOrdersButton)
+
+        //orders are visible
         .waitForElementVisible(visibleOrdersTableFirstRow)
         .saveScreenshot('tests_output/Screenshots/myFirstTest/allevorgange.png')
+
+        //filter by creation date
         .click(creationDateSelector)
         .waitForElementVisible(infoMessageWindowRefresh)
         .saveScreenshot('tests_output/Screenshots/myFirstTest/allevorgangeinfofentser.png')

@@ -18,7 +18,7 @@ module.exports = {
   src_folders: ["tests"],
 
   // See https://nightwatchjs.org/guide/working-with-page-objects/using-page-objects.html
-  page_objects_path: ['node_modules/nightwatch/examples/pages/'],
+  //page_objects_path: ["page-objects"],
 
   // See https://nightwatchjs.org/guide/extending-nightwatch/custom-commands.html
   custom_commands_path: ['node_modules/nightwatch/examples/custom-commands/'],
@@ -45,7 +45,7 @@ module.exports = {
 
       screenshots: {
         enabled: true,
-        path: "C:\Users\diana.pop\Nightwatch\tests_output\Screenshots\myFirstTest",
+        path: "./Screenshots/myFirstTest/",
         on_failure: true
       },
 
